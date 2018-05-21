@@ -1,0 +1,31 @@
+<main role="main" class="container pt-5 pl-0 pr-0" [@routerTransition]> 
+  <div class="my-3 mt-5 pt-3 bg-white rounded box-shadow">
+    <h6 class="border-bottom border-gray pb-2 mb-0 mb-2 row mr-1 ml-1">
+      <div class="col-sm-12 col-md-4">
+        <span class="text-warning h3">{{this.posts.length}}</span>
+        {{this.title}} Recent updates
+      </div>
+      <div class="pt-3 col-sm-12 col-md-8 small text-md-right text-sm-left">
+        <i class="fa fa-clock-o text-muted pr-2"></i> 
+        Last updated {{this.updated | amTimeAgo}} ({{this.updated | date: 'HH:mm:ss'}})
+        <span class="text-success ml-md-4 pt-sm-2 cursor-pointer text-nowrap" *ngIf="this.liveReload" (click)="this.toggleReload()">
+          <i class="fa fa-play pr-2"></i> Live Reload
+        </span>
+        <span class="text-warning ml-md-4 pt-sm-2 cursor-pointer text-nowrap" *ngIf="!this.liveReload" (click)="this.toggleReload()">
+          <i class="fa fa-pause pr-2"></i> Reload Stoped
+        </span>
+      </div>
+    </h6> 
+    <div [@posts]="this.posts.length">
+      <div *ngIf="this.posts?.length === 0" class="loading-overlay">
+          <app-loading [title]="'Loading ' + this.title"></app-loading>
+      </div>
+      <div *ngFor="let id of this.posts; let i = index">
+        <app-post [id]="id" [index]="i"></app-post>
+      </div>    
+      <small class="d-block text-right mt-3">
+        <p class="text-primary cursor-pointer" (click)="this.getPosts(20)"><u>More 20 updates</u></p>
+      </small>
+    </div>    
+  </div>
+</main>

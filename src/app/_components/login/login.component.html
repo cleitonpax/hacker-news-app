@@ -1,0 +1,20 @@
+<main role="main" class="container" [@routerTransition]> 
+    <div class="login-page">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4">
+                <h1>Login</h1>
+                <form role="form">
+                    <div class="form-content">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-underline input-lg" #user name="user" placeholder="User">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control input-underline input-lg" name="pass" placeholder="Password">
+                        </div>
+                    </div>
+                    <a class="btn btn-primary text-white pl-5 pr-5" (click)="login()">Enter</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

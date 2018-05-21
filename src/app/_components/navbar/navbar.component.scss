@@ -1,0 +1,15 @@
+#search{
+  background-color: #434950 !important;
+}
+.input-group-prepend{
+  .bg-dark:hover{
+    color: white !important;
+    text-decoration: none;
+    transition: 0.2s linear color;
+  }
+}
+.navbar-brand{
+  small{
+    font-size: 0.5rem;
+  }
+}

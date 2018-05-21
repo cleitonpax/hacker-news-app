@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+.loading{
+  padding: 30px 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.text-warning{
+  color: rgba(173, 93, 25, 1) !important;
+  &:hover{
+    color: rgba(246, 132, 35, 1) !important;
+    transition: 0.4s linear color;
+    text-decoration: none !important;
+  }
+}
+.comments{
+  .ui-state-active, 
+  .ui-state-default,
+  .accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover {
+    font-size: 0.9rem;
+    background: white !important;
+    border: 0;
+    a{
+      color: rgba(173, 93, 25, 1) !important;      
+    }
+  }
+  .ui-widget-content{
+    border: 0;
+    background: #fff;
+  }
+}
+.ui-growl{
+  top: 80px !important;
+  .ui-state-highlight{
+    background: #c76b1d;
+    border-color: #c76b1d;
+  }
+}

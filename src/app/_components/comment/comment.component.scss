@@ -1,0 +1,56 @@
+.card{
+  border: 0;
+  .item-stats{
+    .item-stats-id {
+      padding: 0;
+      display: flex;
+      .item-stats-avatar {
+        position: relative;
+        margin-right: 12px;
+      }
+      .item-stats-info {
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        .item-stats-name {
+          color: #3d3d3d;
+          font-size: 1.38462rem;
+        }
+        .item-stats-position {
+          color: #ababab;
+        }
+      }
+    }
+    .item-stats-indicators {
+      padding: 5px 32px 32px;
+      .item-stats-indicator {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 1rem 1.8rem;
+        background: #eee;
+        border-bottom: 8px solid white;
+        .item-stats-indicator-title {
+          font-weight: 300;
+        }
+        .item-stats-indicator-counter {
+          font-size: 1.1rem;
+          color: #2cc185;
+          font-weight: 300;          
+        }
+      }
+    }
+  }
+}

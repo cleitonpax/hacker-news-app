@@ -1,0 +1,64 @@
+<main role="main" class="container pt-5" [@routerTransition]> 
+  <div class="card mb-2">
+    <div class="card-body pb-3 pt-3" *ngIf="this.story">
+        <div class="item-stats">
+          <div class="item-stats-id">
+            <div class="item-stats-avatar">
+              <img src="assets/img/avatar.svg" alt="avatar" height="30">
+            </div>
+            <div class="item-stats-info">
+              <span class="item-stats-position">By 
+                <a href class="text-dark" [routerLink]="['/user', this.story.by]" >Story {{this.story?.by}}</a></span>
+              <span class="item-stats-name">{{this.story?.title}}</span>
+              <span class="item-stats-position title pt-3" *ngIf="this.story?.text">{{this.story?.text}}</span>
+              <span class="item-stats-position link">
+                <a [href]="this.story?.url" class="text-warning" target="_blank" alt="Navigate to URL">{{this.story?.url}}</a>
+              </span>
+            </div>
+          </div>
+          <div class="ml-5 mb-5">
+            <i class="fa fa-star text-muted pl-4"></i> {{this.story?.score}} points
+            <i class="fa fa-clock-o text-muted pl-5 pr-2"></i> {{(this.story?.time | amFromUnix) | amTimeAgo}}
+            <span href class="text-warning pl-5" *ngIf="this.user !== ''" (click)="this.setHide(this.story)">
+              <i [ngClass]="this.hidden ? 'fa pr-2 fa-eye-slash' : 'fa pr-2 fa-eye'"></i> <u class="cursor-pointer">{{this.hidden ? 'un-hide' : 'hide'}}</u>
+            </span>
+            <a href class="text-warning pl-5" target="_blank" [href]="'https://hn.algolia.com/?query=' + this.story?.url" >
+              <i class="fa fa-history pr-2"></i> <u class="cursor-pointer">past</u>
+            </a>
+            <a class="text-warning pl-5" target="_blank" [href]="'https://www.google.com/search?q=' + this.story?.url" >
+              <i class="fa fa-globe pr-2"></i> <u class="cursor-pointer">web</u>
+            </a>
+            <span class="text-warning pl-5" *ngIf="this.user !== ''" (click)="this.setFavorite(this.story)">
+              <i [ngClass]="this.favorite ? 'fa pr-2 fa-heart' : 'fa pr-2 fa-heart-o'"></i> <u class="cursor-pointer">favorite</u>
+            </span>
+          </div>
+        </div>
+        <div class="ml-5 mr-5 mb-5 pl-2 pr-3 comments" *ngIf="this.story?.kids">
+          <div [@posts]="this.story?.kids.length">
+              <p-accordion>
+                  <p-accordionTab header="{{this.story?.kids.length}} Comments" [selected]="true">
+                    <div *ngFor="let kid of this.story?.kids; let i = index">
+                      <app-comment [id]="kid" [index]="i"></app-comment>
+                    </div>
+                  </p-accordionTab>
+              </p-accordion>  
+          </div>                  
+        </div>
+        <div class="ml-5 pl-4">
+          <form action="comment">
+            <textarea name="text" rows="6" class="col-6"></textarea>
+            <p class="subtext small text-muted">If you haven't already, would you mind reading about HN's 
+              <a href="newswelcome.html" class="text-warning"><u>approach to comments</u></a>
+              and <a href="newsguidelines.html" class="text-warning"><u>site guidelines</u></a>?
+            </p>
+            <button type="submit" class="btn btn-primary pl-5 pr-5" *ngIf="this.user !== ''">add comment</button>
+            <button type="button" [routerLink]="['/login']" *ngIf="this.user === ''" class="btn btn-primary pl-5 pr-5">login</button>          
+          </form>
+        </div>
+    </div>
+    <div class="card-body pb-3 pt-3" *ngIf="!this.story">
+      <app-loading [title]="'Loading Item'"></app-loading>
+    </div>
+    <p-growl [(value)]="msgs" [life]="2000"></p-growl>
+  </div>
+</main>

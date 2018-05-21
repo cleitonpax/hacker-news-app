@@ -1,0 +1,51 @@
+<main role="main" class="container pt-5" [@routerTransition]> 
+  <div class="card mb-2">
+    <div class="card-body pb-3 pt-3" *ngIf="this.user">
+        <div class="user-stats">
+          <div class="user-stats-id">
+            <div class="user-stats-avatar">
+              <img src="assets/img/avatar.svg" alt="avatar" height="30">
+            </div>
+            <div class="user-stats-info">
+              <span class="user-stats-name">{{this.id}}</span>
+              <span class="user-stats-position">{{this.user?.about}}</span>
+            </div>
+          </div>
+          <div class="user-stats-indicators">
+            <div class="user-stats-indicator">
+              <span class="user-stats-indicator-title">Created</span>
+              <span data-toggle="counter" data-end="173" class="user-stats-indicator-counter">{{(this.user?.created | amFromUnix) | amTimeAgo}}</span>
+            </div>
+            <div class="user-stats-indicator">
+              <span class="user-stats-indicator-title">Karma</span>
+              <span data-toggle="counter" data-end="367" class="user-stats-indicator-counter">{{this.user?.karma}}</span>
+            </div>
+            <div class="user-stats-indicator">
+              <span class="user-stats-indicator-title">Submissions</span>
+              <span data-toggle="counter" data-end="724" class="user-stats-indicator-counter">{{this.user?.submitted.length}}</span>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="card-body pb-3 pt-5 mt-3 text-center" *ngIf="!this.user">      
+      <div class="user-stats">
+        <div class="user-stats-id">
+          <div class="user-stats-avatar">
+            <img src="assets/img/avatar.svg" alt="avatar" height="30">
+          </div>
+          <div class="user-stats-info">
+            <span class="user-stats-name">No user here.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+	
+
+
+

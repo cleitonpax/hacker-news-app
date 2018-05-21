@@ -1,0 +1,41 @@
+<div class="card mb-2" [@posts]="this.story">
+  <div class="card-body pb-3 pt-3" *ngIf="this.story">
+      <div class="item-stats">
+        <div class="item-stats-id">
+          <div class="item-stats-avatar">
+            <img src="assets/img/avatar.svg" alt="avatar" height="30">
+          </div>
+          <div class="item-stats-info pl-2">
+            <span class="item-stats-position">
+              <i class="fa fa-clock-o text-muted pr-2"></i> {{(this.story?.time | amFromUnix) | amTimeAgo}}
+              by <a href class="text-dark" [routerLink]="['/user', this.story.by]" >{{this.story?.by}}</a></span>
+            <span class="item-stats-position title pt-3">{{this.story?.text}}</span>
+            <span class="item-stats-position link pt-3">
+              <a href [routerLink]="['/reply', this.story?.id]" class="text-warning" alt="Reply">Reply</a>
+            </span>
+          </div>          
+        </div>
+      </div>
+      <div class="ml-5pa mt-3 comments">
+        <p-accordion *ngIf="!!this.story?.kids">
+            <p-accordionTab header="{{this.story?.kids.length}} Replies" [selected]="true">
+              <div *ngFor="let kid of this.story?.kids; let i = index">
+                <app-comment [id]="kid" [index]="i"></app-comment>
+              </div>
+            </p-accordionTab>
+        </p-accordion>        
+      </div>
+  </div>
+  <div class="card-body pb-3 pt-3" *ngIf="!this.story">
+    <app-loading [title]="'Loading Comment'"></app-loading>
+  </div>
+  <hr/>
+</div>
+
+
+
+
+	
+
+
+

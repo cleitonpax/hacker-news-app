@@ -1,0 +1,27 @@
+<div class="card mb-2">
+  <div class="card-body pb-3 pt-3" *ngIf="this.story">  
+      <img 
+        src="{{ this.story?.url ? 'http://www.google.com/s2/favicons?domain_url=' + this.story.url : '../assets/img/logo.svg'}}" 
+        alt="this.story?.url" 
+        height="16"
+        class="rounded pull-left mt-1 mr-3"
+        tooltip="{{this.story?.url}}"
+      >
+      <p class="media-body mb-0 small lh-125">
+        <a [routerLink]="['/item', this.story.id]">
+          <strong class="d-block text-gray-dark"><span class="text-muted">{{index + 1}}.</span> {{this.story?.title}}</strong>
+        </a>
+        <small>{{this.story.score}} points by 
+          <a [routerLink]="['/user', this.story.by]">
+            @{{this.story?.by}} 
+          </a> 
+          {{(this.story?.time | amFromUnix) | amTimeAgo}} | 
+          <a href [routerLink]="['/item', this.story?.id]">{{this.story?.descendants || 0}} comments</a>
+        </small>      
+      </p>
+  </div>
+  <div class="card-body pb-3 pt-3" *ngIf="!this.story">
+    Loading
+    <app-loading [title]="'Loading Story'"></app-loading>
+  </div>
+</div>

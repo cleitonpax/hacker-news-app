@@ -1,0 +1,19 @@
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    text-align: center;
+    padding: 3em;
+    h1 {
+        font-weight: 300;
+        margin-top: 20%;
+        margin-bottom: 0px;
+        font-size: 36px;
+    }
+    .form-content {
+        padding: 40px 0 20px;
+    }
+}

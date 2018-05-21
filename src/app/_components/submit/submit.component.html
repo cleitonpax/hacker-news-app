@@ -1,0 +1,43 @@
+<main role="main" class="container pt-5" [@routerTransition]> 
+  <div class="my-3 mt-5 p-3 bg-white rounded box-shadow">
+    <h6 class="border-bottom border-gray pb-2 mb-0 mb-2">
+      Submit
+      <small class="text-muted pull-right">
+        Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the thread.            
+      </small>
+    </h6> 
+    <div class="mt-5">
+      <form class="row">
+        <div class="form-group col-md-6 col-sm-12">
+          <label class="small" for="title">Title</label>
+          <input type="text" class="form-control" id="title">
+        </div>
+        <div class="form-group col-md-6 col-sm-12">
+          <label class="small" for="url">URL</label>
+          <input type="text" class="form-control" id="url">
+        </div>
+        <div class="form-group col-md-12 col-sm-12">
+          <label class="small" for="text">Text</label>
+          <textarea class="form-control" id="text" rows="6"></textarea>
+        </div>        
+        <div class="form-group col-md-6 col-sm-12">
+          <p class="subtext small text-muted">
+            You can also submit via <a class="text-warning" href>bookmarklet</a>.
+          </p>
+        </div>
+        <div class="form-group col-md-6 col-sm-12">
+          <button type="submit" class="btn btn-primary pl-5 pr-5 float-right" *ngIf="this.user !== ''">submit</button>
+          <button type="button" [routerLink]="['/login']" *ngIf="this.user === ''" class="btn btn-primary pl-5 pr-5 float-right">login</button>       
+        </div>     
+      </form>
+    </div>
+  </div>
+</main>
+
+
+
+
+	
+
+
+

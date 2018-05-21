@@ -1,0 +1,53 @@
+<main role="main" class="container pt-5" [@routerTransition]> 
+  <div class="my-3 mt-5 p-3 bg-white rounded box-shadow">
+    <h6 class="border-bottom border-gray pb-2 mb-0 mb-2">
+      Reply
+    </h6> 
+    <div class="card">
+      <div class="card-body pb-3 pt-3" *ngIf="this.story">
+          <div class="item-stats">
+            <div class="item-stats-id pl-0 pr-0">
+              <div class="item-stats-avatar">
+                <img src="assets/img/avatar.svg" alt="avatar" height="30">
+              </div>
+              <div class="item-stats-info">
+                <span class="item-stats-position">By 
+                  <a href class="text-dark" [routerLink]="['/user', this.story.by]" >Story {{this.story?.by}}</a>
+                  <i class="fa fa-clock-o text-muted pl-5 pr-2"></i> {{(this.story?.time | amFromUnix) | amTimeAgo}}
+                  <a href class="text-warning pl-5" [routerLink]="['/item', this.story.parent]" >
+                    <i class="fa fa-home pr-2"></i> <u class="cursor-pointer">{{this.parent?.title}}</u>
+                  </a>      
+                </span>
+                <span class="item-stats-position title pt-3" *ngIf="this.story?.text">{{this.story?.text}}</span>
+                <span class="item-stats-position link">
+                  <a [href]="this.story?.url" class="text-warning" target="_blank" alt="Navigate to URL">{{this.story?.url}}</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="ml-5">
+            <form action="comment">
+              <textarea name="text" rows="6" class="col-6"></textarea>
+              <p class="subtext small text-muted">If you haven't already, would you mind reading about HN's 
+                <a href="newswelcome.html" class="text-warning"><u>approach to comments</u></a>
+                and <a href="newsguidelines.html" class="text-warning"><u>site guidelines</u></a>?
+              </p>
+              <button type="submit" class="btn btn-primary pl-5 pr-5" *ngIf="this.user !== ''">reply</button>
+              <button type="button" [routerLink]="['/login']" *ngIf="this.user === ''" class="btn btn-primary pl-5 pr-5">login</button>
+            </form>
+          </div>
+      </div>
+      <div class="card-body pb-3 pt-3" *ngIf="!this.story">
+        <app-loading [title]="'Loading Item'"></app-loading>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+	
+
+
+
